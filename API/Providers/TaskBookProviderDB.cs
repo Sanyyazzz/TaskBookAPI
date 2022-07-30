@@ -14,8 +14,8 @@ namespace API.Providers
         {
             string query = "SELECT TasksTable.ID, TaskDesc, Category, DeadLine, Important, Completed " +
                             "FROM TasksTable " +
-                            "LEFT JOIN CategoriesTable " +
-                            "ON TasksTable.CategoryID = CategoriesTable.ID";
+                            "LEFT JOIN CategoryTable " +
+                            "ON TasksTable.CategoryID = CategoryTable.ID";
 
             using (IDbConnection db = new SqlConnection(cs))
             {
@@ -27,7 +27,7 @@ namespace API.Providers
         public List<CategoryModel> GetAllCategories()
         {
             string query = "SELECT ID, Category " +
-                            "FROM CategoriesTable";
+                            "FROM CategoryTable";
 
             using (IDbConnection db = new SqlConnection(cs))
             {
