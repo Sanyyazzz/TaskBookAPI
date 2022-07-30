@@ -8,7 +8,7 @@ namespace API.Providers
 {
     public class TaskBookProviderDB : ITaskBookProviderDB
     {
-        private readonly string cs = "server=HOME-PC; database=TaskBookDB; Trusted_Connection=True;";
+        private readonly string cs = "server=sql.bsite.net/MSSQL2016; user=saaanyazzz_TaskBook; password=1234; database=saaanyazzz_TaskBook; Trusted_Connection=True;";
 
         public List<TaskModel> GetAllTasks()
         {
