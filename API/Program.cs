@@ -8,18 +8,19 @@ using GraphQL.SystemTextJson;
 using GraphQL.Types;
 
 var builder = WebApplication.CreateBuilder(args);
+var defaultPolicy = "DefaultPolicy";
 
 // Add services to the container.
 builder.Services.AddSingleton<ITaskBookProviderDB, TaskBookProviderDB>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("DefaultPolicy",
+    options.AddPolicy(name: defaultPolicy,
         policy =>
         {
             policy.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
         });
 });
 
@@ -48,13 +49,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+app.UseHttpsRedirection();
+
+app.UseCors(defaultPolicy);
+
+app.UseAuthorization();
+
 app.UseGraphQL<ISchema>();
 app.UseGraphQLAltair("/");
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-app.UseCors("DefaultPolicy");
-app.UseAuthorization();
 
 app.MapControllers();
 
