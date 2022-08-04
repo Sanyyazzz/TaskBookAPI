@@ -50,35 +50,35 @@
             },
             "GraphQL": {
               "target": "Package",
-              "version": "[5.3.2, )"
+              "version": "[5.3.3, )"
             },
             "GraphQL.MicrosoftDI": {
               "target": "Package",
-              "version": "[5.3.2, )"
+              "version": "[5.3.3, )"
             },
             "GraphQL.NewtonsoftJson": {
               "target": "Package",
-              "version": "[5.3.2, )"
+              "version": "[5.3.3, )"
             },
             "GraphQL.Server.Core": {
               "target": "Package",
-              "version": "[5.2.1, )"
+              "version": "[5.2.2, )"
             },
             "GraphQL.Server.Transports.AspNetCore": {
               "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[6.1.1, )"
             },
             "GraphQL.Server.Ui.Altair": {
               "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[6.1.1, )"
             },
             "GraphQL.Server.Ui.Playground": {
               "target": "Package",
-              "version": "[6.1.0, )"
+              "version": "[6.1.1, )"
             },
             "GraphQL.SystemTextJson": {
               "target": "Package",
-              "version": "[5.3.2, )"
+              "version": "[5.3.3, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -86,7 +86,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.4.0, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
