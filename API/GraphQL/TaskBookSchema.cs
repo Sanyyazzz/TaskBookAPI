@@ -1,5 +1,6 @@
 ﻿using GraphQL.Types;
 using API.GraphQL.Query;
+using API.GraphQL.Mutation;
 
 namespace API.GraphQL
 {
@@ -7,7 +8,8 @@ namespace API.GraphQL
     {
         public TaskBookSchema(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            Query = serviceProvider.GetRequiredService<TaskBookQuery>();
+            Query = serviceProvider.GetRequiredService<RootQuery>();
+            Mutation = serviceProvider.GetRequiredService<RootMutation>();
         }
     }
 }

@@ -7,22 +7,22 @@ using API.Providers;
 
 namespace API.GraphQL.Query
 {
-    public class TaskBookQuery : ObjectGraphType
+    public class CategoryQuery : ObjectGraphType
     {
 
-        public TaskBookQuery(ITaskBookProviderDB providerDB)
+        public CategoryQuery(ITaskBookProviderDB providerDB)
         {
-            Field<ListGraphType<TaskModelGraphType>>()
+            Field<ListGraphType<CategoryModelGraphType>>()
                 .Name("getAll")
-                .Resolve(context => providerDB.GetAllTasks());
+                .Resolve(context => providerDB.GetAllCategories());
 
-            Field<TaskModelGraphType>()
+            Field<CategoryModelGraphType>()
                 .Name("getById")
                 .Argument<IntGraphType>("id")
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    return providerDB.GetTaskByID(id);
+                    return providerDB.GetCategoryByID(id);
                 });
         }
     }

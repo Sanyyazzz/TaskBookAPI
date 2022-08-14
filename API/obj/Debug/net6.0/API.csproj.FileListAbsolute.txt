@@ -100,3 +100,7 @@ D:\Course ISM\Project\App\API\API\obj\Debug\net6.0\refint\API.dll
 D:\Course ISM\Project\App\API\API\obj\Debug\net6.0\API.pdb
 D:\Course ISM\Project\App\API\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 D:\Course ISM\Project\App\API\API\obj\Debug\net6.0\ref\API.dll
+D:\Course ISM\Project\App\API\API\bin\Debug\net6.0\GraphQL.Client.Abstractions.dll
+D:\Course ISM\Project\App\API\API\bin\Debug\net6.0\GraphQL.Client.Abstractions.Websocket.dll
+D:\Course ISM\Project\App\API\API\bin\Debug\net6.0\GraphQL.Client.Serializer.Newtonsoft.dll
+D:\Course ISM\Project\App\API\API\bin\Debug\net6.0\GraphQL.Primitives.dll

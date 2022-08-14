@@ -9,7 +9,7 @@
             ID = Id;
             TaskDesc = taskDesc;
             Category = category;
-            DeadLine = deadLine == DateTime.MinValue ? null : deadLine;
+            DeadLine = deadLine;
             Important = important;
             Completed = completed;
         }
