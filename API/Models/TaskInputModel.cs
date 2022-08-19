@@ -4,11 +4,11 @@
     {
         public TaskInputModel() { }
 
-        public TaskInputModel(string taskDesc, int categoryID, string deadLine, bool important, bool completed)
+        public TaskInputModel(string taskDesc, int? categoryID, string? deadLine, bool? important, bool? completed)
         {
             TaskDesc = taskDesc;
             CategoryID = categoryID;
-            DeadLine = DateTime.Parse(deadLine);
+            DeadLine = deadLine != null ? DateTime.Parse(deadLine) : null;
             Important = important;
             Completed = completed;
         }
