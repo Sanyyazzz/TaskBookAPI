@@ -23,7 +23,7 @@ namespace API.GraphQL.Mutation
 
             Field<IntGraphType>()
                 .Name("deleteCategory")
-                .Argument<IntGraphType>("id")
+                .Argument<NonNullGraphType<IntGraphType>>("id")
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");

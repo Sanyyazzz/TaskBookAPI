@@ -10,7 +10,7 @@ namespace API.GraphQL.Types
         {
             Field<NonNullGraphType<StringGraphType>>().Name("taskDesc").Resolve(context => context.Source.TaskDesc);
             Field<IntGraphType>().Name("categoryID").Resolve(context => context.Source.CategoryID);
-            Field<DateTimeGraphType>().Name("deadLine").Resolve(context => context.Source.DeadLine);
+            Field<StringGraphType>().Name("deadLine").Resolve(context => context.Source.DeadLine);
             Field<BooleanGraphType>().Name("important").Resolve(context => context.Source.Important);
             Field<BooleanGraphType>().Name("completed").Resolve(context => context.Source.Completed);
         }

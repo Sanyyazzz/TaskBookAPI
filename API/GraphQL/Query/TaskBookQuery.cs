@@ -18,7 +18,7 @@ namespace API.GraphQL.Query
 
             Field<TaskModelGraphType>()
                 .Name("getById")
-                .Argument<IntGraphType>("id")
+                .Argument<NonNullGraphType<IntGraphType>>("id")
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
