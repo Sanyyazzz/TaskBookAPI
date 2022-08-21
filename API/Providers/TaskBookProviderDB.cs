@@ -1,4 +1,5 @@
-﻿using API.Interfaces;
+﻿using API.Functions;
+using API.Interfaces;
 using API.Models;
 using Dapper;
 using System.Data;
@@ -8,14 +9,19 @@ namespace API.Providers
 {
     public class TaskBookProviderDB : ITaskBookProviderDB
     {
-        private readonly string cs = "Data Source=sql.bsite.net\\MSSQL2016;Initial Catalog=saaanyazzz_TaskBook;User ID=saaanyazzz_TaskBook;Password=1234;TrustServerCertificate=true";
+        private readonly string cs = "Data Source=sql.bsite.net\\MSSQL2016;Initial Catalog=saaanyazzz_TaskBook;User ID=saaanyazzz_TaskBook;Password=1111;TrustServerCertificate=true";
 
-        public List<TaskModel> GetAllTasks()
+        public List<TaskModel> GetAllTasks(string? sortParameter)
         {
-            string query = "SELECT TaskTable.ID, TaskDesc, Category, DeadLine, Important, Completed " +
-                            "FROM TaskTable " +
-                            "LEFT JOIN CategoryTable " +
-                            "ON TaskTable.CategoryID = CategoryTable.ID";
+            string sortByParameter = SortParameterBuilder.GetSortByCategory(sortParameter);
+            string query = "SELECT TaskTable.ID, TaskDesc, Category, DeadLine, Important, Completed "+
+                            "FROM TaskTable "+
+                            "LEFT JOIN CategoryTable "+
+                            "ON TaskTable.CategoryID = CategoryTable.ID "+
+                            $"{sortByParameter} "+
+                            "ORDER BY "+
+                            "CASE WHEN Completed = 1 THEN 1 ELSE 0 END, "+
+							"CASE WHEN DeadLine IS NULL THEN 1 ELSE 0 END, DeadLine";
 
             using (IDbConnection db = new SqlConnection(cs))
             {
@@ -87,7 +93,11 @@ namespace API.Providers
 
         public TaskModel GetTaskByID(int id)
         {
-            string query = "SELECT * FROM TaskTable WHERE ID = @id";
+            string query = "SELECT TaskTable.ID, TaskDesc, Category, DeadLine, Important, Completed " +
+                            "FROM TaskTable " +
+                            "LEFT JOIN CategoryTable " +
+                            "ON TaskTable.CategoryID = CategoryTable.ID " +
+                            "WHERE TaskTable.ID = @id";
 
             using (IDbConnection db = new SqlConnection(cs))
             {

@@ -4,7 +4,7 @@ namespace API.Interfaces
 {
     public interface ITaskBookProviderDB
     {
-        List<TaskModel> GetAllTasks();
+        List<TaskModel> GetAllTasks(string? sortParameter);
         int AddTask(TaskInputModel taskModel);
         int DeleteTask(int id);
         int CompleteTask(int id);

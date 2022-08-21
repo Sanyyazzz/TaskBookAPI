@@ -14,7 +14,11 @@ namespace API.GraphQL.Query
         {
             Field<ListGraphType<TaskModelGraphType>>()
                 .Name("getAll")
-                .Resolve(context => providerDB.GetAllTasks());
+                .Argument<StringGraphType>("sortParam")
+                .Resolve(context => {
+                    var sortParam = context.GetArgument<string>("sortParam");
+                    return providerDB.GetAllTasks(sortParam);
+                });
 
             Field<TaskModelGraphType>()
                 .Name("getById")

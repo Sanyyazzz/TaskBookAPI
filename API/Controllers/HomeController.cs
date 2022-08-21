@@ -10,12 +10,9 @@ namespace API.Controllers
     public class HomeController : Controller
     {
         [HttpGet]
-        public string Index()
+        public void Index()
         {
-            var provider = new TaskBookProviderDB();
-            var tasks = provider.GetAllTasks();
-            var json = JsonConvert.SerializeObject(tasks);
-            return json;
+
         }
     }
 }
