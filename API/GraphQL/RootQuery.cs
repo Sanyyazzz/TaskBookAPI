@@ -15,7 +15,7 @@ namespace API.GraphQL
 
             Field<CategoryQuery>()
                 .Name("category")
-                .Resolve(context => new { });               
+                .Resolve(context => new { });
         }
     }
 }

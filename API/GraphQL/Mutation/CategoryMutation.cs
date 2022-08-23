@@ -9,7 +9,7 @@ namespace API.GraphQL.Mutation
 {
     public class CategoryMutation : ObjectGraphType
     {
-        public CategoryMutation(ITaskBookProviderDB providerDB)
+        public CategoryMutation(IServiceHandler providerDB)
         {
             Field<CategoryModelGraphType>()
                 .Name("addCategory")
@@ -17,8 +17,8 @@ namespace API.GraphQL.Mutation
                 .Resolve(context =>
                 {
                     var category = context.GetArgument<CategoryInputModel>("category");
-                    var id = providerDB.AddCategory(category);
-                    return providerDB.GetCategoryByID(id);
+                    var id = providerDB.GetProvider().AddCategory(category);
+                    return providerDB.GetProvider().GetCategoryByID(id);
                 });
 
             Field<IntGraphType>()
@@ -27,7 +27,7 @@ namespace API.GraphQL.Mutation
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    return providerDB.DeleteCategory(id);
+                    return providerDB.GetProvider().DeleteCategory(id);
                 });
 
             Field<CategoryModelGraphType>()
@@ -38,8 +38,8 @@ namespace API.GraphQL.Mutation
                 {
                     var id = context.GetArgument<int>("id");
                     var category = context.GetArgument<CategoryInputModel>("category");
-                    providerDB.EditCategory(id, category);
-                    return providerDB.GetCategoryByID(id);
+                    providerDB.GetProvider().EditCategory(id, category);
+                    return providerDB.GetProvider().GetCategoryByID(id);
                 });
         }
     }

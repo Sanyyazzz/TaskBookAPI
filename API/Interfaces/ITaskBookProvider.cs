@@ -2,7 +2,7 @@
 
 namespace API.Interfaces
 {
-    public interface ITaskBookProviderDB
+    public interface ITaskBookProvider
     {
         List<TaskModel> GetAllTasks(string? sortParameter);
         int AddTask(TaskInputModel taskModel);

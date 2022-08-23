@@ -10,14 +10,14 @@ namespace API.GraphQL.Query
     public class TaskBookQuery : ObjectGraphType
     {
 
-        public TaskBookQuery(ITaskBookProviderDB providerDB)
+        public TaskBookQuery(IServiceHandler providerDB)
         {
             Field<ListGraphType<TaskModelGraphType>>()
                 .Name("getAll")
                 .Argument<StringGraphType>("sortParam")
                 .Resolve(context => {
                     var sortParam = context.GetArgument<string>("sortParam");
-                    return providerDB.GetAllTasks(sortParam);
+                    return providerDB.GetProvider().GetAllTasks(sortParam);
                 });
 
             Field<TaskModelGraphType>()
@@ -26,7 +26,7 @@ namespace API.GraphQL.Query
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    return providerDB.GetTaskByID(id);
+                    return providerDB.GetProvider().GetTaskByID(id);
                 });
         }
     }

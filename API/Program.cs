@@ -1,6 +1,7 @@
 using API.GraphQL;
 using API.Interfaces;
 using API.Providers;
+using API.Services;
 using GraphQL;
 using GraphQL.MicrosoftDI;
 using GraphQL.Server;
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 var defaultPolicy = "DefaultPolicy";
 
 // Add services to the container.
-builder.Services.AddSingleton<ITaskBookProviderDB, TaskBookProviderDB>();
+builder.Services.AddSingleton<IServiceHandler, ServiceHandler>();
 
 builder.Services.AddCors(options =>
 {

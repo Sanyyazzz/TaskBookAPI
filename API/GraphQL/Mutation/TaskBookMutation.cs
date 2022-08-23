@@ -9,7 +9,7 @@ namespace API.GraphQL.Mutation
 {
     public class TaskBookMutation : ObjectGraphType
     {
-        public TaskBookMutation(ITaskBookProviderDB providerDB)
+        public TaskBookMutation(IServiceHandler providerDB)
         {
             Field<TaskModelGraphType>()
                 .Name("addTask")
@@ -17,8 +17,8 @@ namespace API.GraphQL.Mutation
                 .Resolve( context => 
                 {
                     var task = context.GetArgument<TaskInputModel>("task");
-                    var id = providerDB.AddTask(task);
-                    return providerDB.GetTaskByID(id);
+                    var id = providerDB.GetProvider().AddTask(task);
+                    return providerDB.GetProvider().GetTaskByID(id);
                 });
 
             Field<IntGraphType>()
@@ -27,7 +27,7 @@ namespace API.GraphQL.Mutation
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    return providerDB.DeleteTask(id);
+                    return providerDB.GetProvider().DeleteTask(id);
                 });
 
             Field<TaskModelGraphType>()
@@ -38,8 +38,8 @@ namespace API.GraphQL.Mutation
                 {
                     var id = context.GetArgument<int>("id");
                     var task = context.GetArgument<TaskInputModel>("task");
-                    providerDB.EditTask(id, task);
-                    return providerDB.GetTaskByID(id);
+                    providerDB.GetProvider().EditTask(id, task);
+                    return providerDB.GetProvider().GetTaskByID(id);
                 });
 
             Field<TaskModelGraphType>()
@@ -48,8 +48,8 @@ namespace API.GraphQL.Mutation
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    providerDB.CompleteTask(id);
-                    return providerDB.GetTaskByID(id);
+                    providerDB.GetProvider().CompleteTask(id);
+                    return providerDB.GetProvider().GetTaskByID(id);
                 });
         }        
     }

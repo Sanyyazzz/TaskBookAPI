@@ -10,11 +10,11 @@ namespace API.GraphQL.Query
     public class CategoryQuery : ObjectGraphType
     {
 
-        public CategoryQuery(ITaskBookProviderDB providerDB)
+        public CategoryQuery(IServiceHandler providerDB)
         {
             Field<ListGraphType<CategoryModelGraphType>>()
                 .Name("getAll")
-                .Resolve(context => providerDB.GetAllCategories());
+                .Resolve(context => providerDB.GetProvider().GetAllCategories());
 
             Field<CategoryModelGraphType>()
                 .Name("getById")
@@ -22,7 +22,7 @@ namespace API.GraphQL.Query
                 .Resolve(context =>
                 {
                     var id = context.GetArgument<int>("id");
-                    return providerDB.GetCategoryByID(id);
+                    return providerDB.GetProvider().GetCategoryByID(id);
                 });
         }
     }

@@ -1,6 +1,4 @@
 ﻿using GraphQL.Types;
-using API.GraphQL.Types;
-using API.GraphQL.Query;
 using API.GraphQL.Mutation;
 
 namespace API.GraphQL
@@ -16,6 +14,10 @@ namespace API.GraphQL
 
             Field<CategoryMutation>()
                 .Name("category")
+                .Resolve(context => new { });
+
+            Field<ServiceMutation>()
+                .Name("service")
                 .Resolve(context => new { });
         }
     }

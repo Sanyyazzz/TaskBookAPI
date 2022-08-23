@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace API.Providers
 {
-    public class TaskBookProviderDB : ITaskBookProviderDB
+    public class TaskBookProviderDB : ITaskBookProvider
     {
         private readonly string cs = "Data Source=sql.bsite.net\\MSSQL2016;Initial Catalog=saaanyazzz_TaskBook;User ID=saaanyazzz_TaskBook;Password=1111;TrustServerCertificate=true";
 
