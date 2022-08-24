@@ -6,7 +6,7 @@
     </categoryID>
     <deadLine>2022-01-01T15:00:00</deadLine>
     <important>false</important>
-    <completed>false</completed>
+    <completed>true</completed>
   </task>
   <task id="2">
     <taskDesc>test xml2</taskDesc>
@@ -14,7 +14,7 @@
     </categoryID>
     <deadLine>2022-08-23T15:50:00</deadLine>
     <important>false</important>
-    <completed>false</completed>
+    <completed>true</completed>
   </task>
   <task id="3">
     <taskDesc>test xml2</taskDesc>
@@ -38,7 +38,7 @@
     </categoryID>
     <deadLine>2022-08-23T15:50:00</deadLine>
     <important>true</important>
-    <completed>false</completed>
+    <completed>true</completed>
   </task>
   <task id="7">
     <taskDesc>test xml5</taskDesc>
@@ -76,6 +76,24 @@
     <taskDesc>Lear222n</taskDesc>
     <categoryID>34</categoryID>
     <deadLine>2022-04-05T00:00:00</deadLine>
+    <important>false</important>
+    <completed>true</completed>
+  </task>
+  <task id="43">
+    <taskDesc>feg5</taskDesc>
+    <categoryID>
+    </categoryID>
+    <deadLine>
+    </deadLine>
+    <important>false</important>
+    <completed>false</completed>
+  </task>
+  <task id="44">
+    <taskDesc>feg5</taskDesc>
+    <categoryID>
+    </categoryID>
+    <deadLine>
+    </deadLine>
     <important>false</important>
     <completed>false</completed>
   </task>

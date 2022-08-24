@@ -66,7 +66,9 @@ namespace API.Providers
                 XmlText idText = document.CreateTextNode((++_idTask).ToString());
                 XmlText taskDescText = document.CreateTextNode(taskModel.TaskDesc);
                 XmlText categoryIDText = document.CreateTextNode(taskModel.CategoryID.ToString());
-                XmlText deadLineText = document.CreateTextNode(taskModel.DeadLine.Value.ToString("yyyy-MM-ddTHH:mm:ss"));
+                XmlText deadLineText = document.CreateTextNode(
+                    taskModel.DeadLine != null ? taskModel.DeadLine.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null
+                    );
                 XmlText importantText = document.CreateTextNode(taskModel.Important.ToString().ToLower());
                 XmlText completedText = document.CreateTextNode(taskModel.Completed.ToString().ToLower());
 
@@ -97,27 +99,176 @@ namespace API.Providers
 
         public int CompleteTask(int id)
         {
-            throw new NotImplementedException();
+            var document = new XmlDocument();
+            try
+            {
+                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                XmlElement TaskRoot = document.DocumentElement;
+                if (TaskRoot != null)
+                {
+                    foreach (XmlElement rootElement in TaskRoot)
+                    {
+                        var nodeAttr = rootElement.Attributes.GetNamedItem("id");
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
+
+                        if (ID == id)
+                        {
+                            foreach (XmlElement node in rootElement)
+                            {
+                                if (node.Name == "completed")
+                                {
+                                    node.InnerText = "true";
+                                }
+                            }
+                        }
+                    }                    
+                }
+                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return id;
         }
 
         public int DeleteCategory(int id)
         {
-            throw new NotImplementedException();
+            var document = new XmlDocument();
+            try
+            {
+                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                XmlElement CategoryRoot = document.DocumentElement;
+                if (CategoryRoot != null)
+                {
+                    foreach (XmlElement rootElement in CategoryRoot)
+                    {
+                        var nodeAttr = rootElement.Attributes.GetNamedItem("id");
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
+
+                        if (ID == id)
+                        {
+                            CategoryRoot.RemoveChild(rootElement);
+                        }
+                    }
+                }
+                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return id;
         }
 
         public int DeleteTask(int id)
         {
-            throw new NotImplementedException();
+            var document = new XmlDocument();
+            try
+            {
+                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                XmlElement TaskRoot = document.DocumentElement;
+                if (TaskRoot != null)
+                {
+                    foreach (XmlElement rootElement in TaskRoot)
+                    {
+                        var nodeAttr = rootElement.Attributes.GetNamedItem("id");
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
+
+                        if (ID == id)
+                        {
+                            TaskRoot.RemoveChild(rootElement);
+                        }
+                    }
+                }
+                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return id;
         }
 
-        public int EditCategory(int id, CategoryInputModel task)
+        public int EditCategory(int id, CategoryInputModel category)
         {
-            throw new NotImplementedException();
+            var document = new XmlDocument();
+            try
+            {
+                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                XmlElement CategoryRoot = document.DocumentElement;
+                if (CategoryRoot != null)
+                {
+                    foreach (XmlElement rootElement in CategoryRoot)
+                    {
+                        var nodeAttr = rootElement.Attributes.GetNamedItem("id");
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
+
+                        if (ID == id)
+                        {
+                            foreach (XmlElement node in rootElement)
+                            {
+                                if (node.Name == "categoryName") node.InnerText = category.Category;
+                            }
+                        }
+                    }
+                }
+                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return id;
         }
 
-        public int EditTask(int id, TaskInputModel task)
+        public int EditTask(int id, TaskInputModel taskInput)
         {
-            throw new NotImplementedException();
+            var categories = GetAllCategories();
+            var task = new TaskModel();
+            var document = new XmlDocument();
+            try
+            {
+                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                XmlElement TaskRoot = document.DocumentElement;
+                if (TaskRoot != null)
+                {
+                    foreach (XmlElement rootElement in TaskRoot)
+                    {
+                        var nodeAttr = rootElement.Attributes.GetNamedItem("id");
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
+
+                        if (ID == id)
+                        {
+                            foreach (XmlElement node in rootElement)
+                            {                                
+                                if (node.Name == "taskDesc") node.InnerText = taskInput.TaskDesc;
+                                if (node.Name == "categoryID")
+                                {
+                                    node.InnerText = taskInput.CategoryID.ToString();
+                                }
+                                if (node.Name == "deadLine")
+                                {
+                                    node.InnerText = taskInput.DeadLine != null ? taskInput.DeadLine.Value.ToString("yyyy-MM-ddTHH:mm:ss") : null;
+                                }
+                                if (node.Name == "important") node.InnerText = taskInput.Important.ToString().ToLower();
+                                if (node.Name == "completed") node.InnerText = taskInput.Completed.ToString().ToLower();
+                            }
+                        }
+                    }
+                }
+                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return id;
         }
 
         public List<CategoryModel> GetAllCategories()
@@ -209,12 +360,13 @@ namespace API.Providers
                     foreach (XmlElement rootElement in CategoryRoot)
                     {
                         var nodeAttr = rootElement.Attributes.GetNamedItem("id");
-                        category.ID = XmlConvert.ToInt32(nodeAttr.Value);
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
 
-                        if (category.ID == id)
+                        if (ID == id)
                         {
                             foreach (XmlElement node in rootElement)
                             {
+                                category.ID = id;
                                 if (node.Name == "categoryName") category.Category = node.InnerText;
                             }
                         }
@@ -243,14 +395,18 @@ namespace API.Providers
                     foreach (XmlElement rootElement in TaskRoot)
                     {
                         var nodeAttr = rootElement.Attributes.GetNamedItem("id");
-                        task.ID = XmlConvert.ToInt32(nodeAttr.Value);
+                        var ID = XmlConvert.ToInt32(nodeAttr.Value);
 
-                        if(task.ID == id)
+                        if(ID == id)
                         {
                             foreach (XmlElement node in rootElement)
                             {
+                                task.ID = ID;
                                 if (node.Name == "taskDesc") task.TaskDesc = node.InnerText;
-                                if (node.Name == "categoryID") task.Category = SearchCategoryById.GetCategory(categories, XmlConvert.ToInt32(node.InnerText)); //TODO: Search category for id
+                                if (node.Name == "categoryID")
+                                {
+                                    task.Category = node.InnerText != "" ? SearchCategoryById.GetCategory(categories, XmlConvert.ToInt32(node.InnerText)) : null;
+                                }
                                 if (node.Name == "deadLine") task.DeadLine = node.InnerText != "" ? XmlConvert.ToDateTime(node.InnerText) : null;
                                 if (node.Name == "important") task.Important = XmlConvert.ToBoolean(node.InnerText);
                                 if (node.Name == "completed") task.Completed = XmlConvert.ToBoolean(node.InnerText);
