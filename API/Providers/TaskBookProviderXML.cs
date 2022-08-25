@@ -18,9 +18,8 @@ namespace API.Providers
                 document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
                 XmlElement? CategoryRoot = document.DocumentElement;
 
-                // создаем новый элемент person
                 XmlElement categoryElem = document.CreateElement("category");
-                // создаем элементы company и age
+
                 XmlAttribute categoryID = document.CreateAttribute("id");
                 XmlElement categoryName = document.CreateElement("categoryName");
 
@@ -41,6 +40,7 @@ namespace API.Providers
             {
 
             }
+
             return _idCategory;
         }
 
@@ -52,10 +52,8 @@ namespace API.Providers
                 document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
                 XmlElement? TaskRoot = document.DocumentElement;
 
-                // 
                 XmlElement taskElem = document.CreateElement("task");
 
-                //
                 XmlAttribute id = document.CreateAttribute("id");
                 XmlElement taskDesc = document.CreateElement("taskDesc");
                 XmlElement categoryID = document.CreateElement("categoryID");
@@ -277,7 +275,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
                 XmlElement CategoryRoot = document.DocumentElement;
                 if (CategoryRoot != null)
                 {
@@ -289,7 +287,7 @@ namespace API.Providers
                         category.ID = XmlConvert.ToInt32(nodeAttr.Value);
 
                         foreach (XmlElement node in rootElement)
-                        {
+                        {                            
                             if (node.Name == "categoryName") category.Category = node.InnerText;
                         }
                         _idCategory = category.ID+2;
