@@ -15,7 +15,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
                 XmlElement? CategoryRoot = document.DocumentElement;
 
                 XmlElement categoryElem = document.CreateElement("category");
@@ -34,7 +34,7 @@ namespace API.Providers
 
                 CategoryRoot.AppendChild(categoryElem);
 
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
             }
             catch (Exception)
             {
@@ -49,7 +49,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/TasksItems.xml");
                 XmlElement? TaskRoot = document.DocumentElement;
 
                 XmlElement taskElem = document.CreateElement("task");
@@ -86,7 +86,7 @@ namespace API.Providers
 
                 TaskRoot.AppendChild(taskElem);
 
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/TasksItems.xml");
             }
             catch (Exception)
             {
@@ -100,7 +100,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/TasksItems.xml");
                 XmlElement TaskRoot = document.DocumentElement;
                 if (TaskRoot != null)
                 {
@@ -121,7 +121,7 @@ namespace API.Providers
                         }
                     }                    
                 }
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/TasksItems.xml");
             }
             catch (Exception)
             {
@@ -136,7 +136,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
                 XmlElement CategoryRoot = document.DocumentElement;
                 if (CategoryRoot != null)
                 {
@@ -151,7 +151,7 @@ namespace API.Providers
                         }
                     }
                 }
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
             }
             catch (Exception)
             {
@@ -166,7 +166,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/TasksItems.xml");
                 XmlElement TaskRoot = document.DocumentElement;
                 if (TaskRoot != null)
                 {
@@ -181,7 +181,7 @@ namespace API.Providers
                         }
                     }
                 }
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/TasksItems.xml");
             }
             catch (Exception)
             {
@@ -196,7 +196,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
                 XmlElement CategoryRoot = document.DocumentElement;
                 if (CategoryRoot != null)
                 {
@@ -214,7 +214,7 @@ namespace API.Providers
                         }
                     }
                 }
-                document.Save("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Save("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
             }
             catch (Exception)
             {
@@ -310,7 +310,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/TasksItems.xml");
                 XmlElement TaskRoot = document.DocumentElement;
                 if (TaskRoot != null)
                 {
@@ -351,7 +351,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/CategoriesItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/CategoriesItems.xml");
                 XmlElement CategoryRoot = document.DocumentElement;
                 if (CategoryRoot != null)
                 {
@@ -386,7 +386,7 @@ namespace API.Providers
             var document = new XmlDocument();
             try
             {
-                document.Load("D:/Course ISM/Project/App/API/API/XMLFiles/TasksItems.xml");
+                document.Load("https://bsite.net/Saaanyazzz/TasksItems.xml");
                 XmlElement TaskRoot = document.DocumentElement;
                 if (TaskRoot != null)
                 {
