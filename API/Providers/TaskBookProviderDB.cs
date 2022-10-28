@@ -11,7 +11,7 @@ namespace API.Providers
     {
         private readonly string cs = "Data Source=sql.bsite.net\\MSSQL2016;Initial Catalog=saaanyazzz_TaskBook;User ID=saaanyazzz_TaskBook;Password=1111;TrustServerCertificate=true";
 
-        public List<TaskModel> GetAllTasks(string? sortParameter)
+        public IEnumerable<TaskModel> GetAllTasks(string? sortParameter)
         {
             string sortByParameter = SortParameterBuilder.GetSortByCategory(sortParameter);
             string query = "SELECT TaskTable.ID, TaskDesc, Category, DeadLine, Important, Completed "+
@@ -24,7 +24,7 @@ namespace API.Providers
 							"CASE WHEN DeadLine IS NULL THEN 1 ELSE 0 END, DeadLine";
 
             using (IDbConnection db = new SqlConnection(cs))
-            {
+            {                
                 var tasks = db.Query<TaskModel>(query).ToList();
                 return tasks;
             }
@@ -106,7 +106,7 @@ namespace API.Providers
             }
         }
 
-        public List<CategoryModel> GetAllCategories()
+        public IEnumerable<CategoryModel> GetAllCategories()
         {
             string query = "SELECT ID, Category " +
                             "FROM CategoryTable";
@@ -133,7 +133,8 @@ namespace API.Providers
 
         public int DeleteCategory(int id)
         {
-            string query = "DELETE FROM CategoryTable WHERE ID=@id";
+            string query = "" +
+                "DELETE FROM CategoryTable WHERE ID=@id";
 
             using (IDbConnection db = new SqlConnection(cs))
             {

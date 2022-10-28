@@ -7,6 +7,9 @@ namespace API.GraphQL.Mutation
 {
     public class ServiceMutation : ObjectGraphType
     {
+        private TaskBookProviderDB providerDB = new TaskBookProviderDB();
+        private TaskBookProviderXML providerXML = new TaskBookProviderXML();
+
         public ServiceMutation(IServiceHandler service)
         {
             Field<StringGraphType>()
@@ -18,12 +21,12 @@ namespace API.GraphQL.Mutation
                     switch (provider)
                     {
                         case "xml": {
-                                service.ChangeProvider(new TaskBookProviderXML());
+                                service.ChangeProvider(providerXML);
                                 break;
                                 };
 
                         case "sql": {
-                                service.ChangeProvider(new TaskBookProviderDB());
+                                service.ChangeProvider(providerDB);
                                 break;
                             };
                     }

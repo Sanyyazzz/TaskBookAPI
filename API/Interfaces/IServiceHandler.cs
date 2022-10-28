@@ -4,5 +4,6 @@
     {
         void ChangeProvider(ITaskBookProvider provider);
         ITaskBookProvider GetProvider();
+        string GetProviderName();
     }
 }

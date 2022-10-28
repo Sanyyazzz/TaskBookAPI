@@ -4,12 +4,12 @@ namespace API.Functions
 {
     public static class SearchCategoryById
     {
-        public static string GetCategory(List<CategoryModel> categories, int? id)
+        public static string GetCategory(IEnumerable<CategoryModel> categories, string? id)
         {
             string categoryName = null;
             foreach(CategoryModel category in categories)
             {
-                if (id == category.ID) categoryName = category.Category;
+                if (id == category.ID.ToString()) categoryName = category.Category;
             }
             return categoryName;
         }

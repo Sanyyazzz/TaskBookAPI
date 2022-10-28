@@ -1,5 +1,4 @@
 ﻿using GraphQL.Types;
-using API.GraphQL.Types;
 using API.GraphQL.Query;
 
 namespace API.GraphQL
@@ -15,6 +14,10 @@ namespace API.GraphQL
 
             Field<CategoryQuery>()
                 .Name("category")
+                .Resolve(context => new { });
+
+            Field<ServiceQuery>()
+                .Name("service")
                 .Resolve(context => new { });
         }
     }

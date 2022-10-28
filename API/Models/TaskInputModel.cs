@@ -8,7 +8,7 @@
         {
             TaskDesc = taskDesc;
             CategoryID = categoryID;
-            DeadLine = deadLine != null ? DateTime.Parse(deadLine) : null;
+            DeadLine = !string.IsNullOrEmpty(deadLine) ? DateTime.Parse(deadLine) : null;
             Important = important;
             Completed = completed;
         }
