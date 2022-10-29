@@ -134,7 +134,7 @@ namespace API.Providers
         public int DeleteCategory(int id)
         {
             string query = "" +
-                "DELETE FROM CategoryTable WHERE ID=@id";
+                "DELETE FROM CategoryTable WHERE ID=@id DELETE FROM TaskTable WHERE CategoryID=@id";
 
             using (IDbConnection db = new SqlConnection(cs))
             {
